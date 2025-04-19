@@ -1,0 +1,36 @@
+const int pwmPin = 9;       // PWM output for Vset
+const int currentPin = A0;  // I-to-V signal input
+int sweepStep = 0;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(pwmPin, OUTPUT);
+}
+
+void loop() {
+  for (int v = 0; v <= 255; v++) {
+    analogWrite(pwmPin, v);  // Generate Vset (0-5V via RC filter)
+    delay(10);  // let it settle
+
+    int adcValue = analogRead(currentPin);
+    float voltage = (v / 255.0) * 5.0;
+    float currentVolt = (adcValue * 5.0) / 1023.0;
+
+    Serial.print(voltage, 3); Serial.print(",");
+    Serial.println(currentVolt, 3);  // Send V,I over serial
+  }
+
+  // Optional: reverse scan
+  for (int v = 255; v >= 0; v--) {
+    analogWrite(pwmPin, v);
+    delay(10);
+
+    int adcValue = analogRead(currentPin);
+    float voltage = (v / 255.0) * 5.0;
+    float currentVolt = (adcValue * 5.0) / 1023.0;
+
+    Serial.print(voltage, 3); Serial.print(",");
+    Serial.println(currentVolt, 3);
+  }
+} 
+
