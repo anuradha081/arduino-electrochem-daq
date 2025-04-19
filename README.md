@@ -1,4 +1,4 @@
-Arduino based electrochemical Data Aquisition. This repository presents an Arduino-based data acquisition system tailored for electrochemical sensors, enabling real-time monitoring and recording of sensor outputs. The system supports applications in analytical chemistry, envronmental sensing, and low-cost instrumentation.
+Arduino based  Data Aquisition using ElectrochemicalSensor/Potentiometer. This repository presents an Arduino-based data acquisition system tailored for electrochemical sensors, enabling real-time monitoring and recording of sensor outputs. The system supports applications in analytical chemistry, envronmental sensing, and low-cost instrumentation.
 
 This repository presents a low-cost, Arduino-based data acquisition (DAQ) system specifically designed for interfacing with electrochemical sensors. The setup enables real-time data collection, processing, and logging for applications in analytical chemistry, environmental monitoring, and bio-sensing.
 
