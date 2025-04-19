@@ -34,7 +34,7 @@ Software Requirements
 1. Assemble the circuit as per the schematic.
 2. Upload the Arduino sketch from the `code/` directory.
 3. Open the serial monitor (or use the Python script) to read and log data.
-4. (Optional) Plot the data using tools like Python, Excel, or MATLAB.
+4. (Optional) Plot the data using tools like Python.
 
 
 
