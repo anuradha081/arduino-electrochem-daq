@@ -1,0 +1,36 @@
+import serial
+import matplotlib.pyplot as plt
+import time
+
+# Replace with your correct serial port and baud rate
+ser = serial.Serial('COM6', 9600, timeout=1)
+time.sleep(2)  # Give time for connection
+
+voltages = []
+currents = []
+
+try:
+    for _ in range(100):  # Adjust number of samples as needed
+        
+        line = ser.readline().decode('latin-1').strip()
+        if line:
+            try:
+                voltage, current = map(float, line.split(','))
+                voltages.append(voltage)
+                currents.append(current)
+                print(f"Voltage: {voltage} V, Current: {current} A")
+            except ValueError:
+                print(f"Skipping line: {line}")
+except KeyboardInterrupt:
+    print("Interrupted by user.")
+finally:
+    ser.close()
+
+# Plotting
+plt.figure(figsize=(8, 5))
+plt.plot(voltages, currents, 'bo-')
+plt.xlabel('Voltage (V)')
+plt.ylabel('Current (A)')
+plt.title('Current vs Voltage')
+plt.grid(True)
+plt.show()
